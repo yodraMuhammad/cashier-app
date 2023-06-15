@@ -18,6 +18,28 @@ body {
   background-color: #22668A;
 }
 
+.hasil{
+  height: 60vh;
+}
+
+.menu{
+  height: 83vh;
+}
+
+.overflow-auto::-webkit-scrollbar{
+  width: 10px;
+}
+
+.overflow-auto::-webkit-scrollbar-thumb {
+  background: #22668A;
+  border-radius: 20px;
+}
+
+.overflow-auto::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;

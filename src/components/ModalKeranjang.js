@@ -3,13 +3,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
 import { Modal, Button, Form, FormGroup } from 'react-bootstrap'
 
-export default function ModalKeranjang({showModal, handleClose, keranjangDetail, jumlah, keterangan, tambah, kurang, changeHandler, handleSubmit} ) {
+export default function ModalKeranjang({showModal, handleClose, keranjangDetail, jumlah, keterangan, totalHarga, tambah, kurang, changeHandler, handleSubmit, hapusPesanan}) {
   if(keranjangDetail){
-    // const handleFormSubmit = (event) => {
-    //   event.preventDefault(); // Mencegah perilaku bawaan form saat dikirim
-    //   handleSubmit(); // Panggil fungsi handleSubmit yang ditangani oleh komponen induk
-    // };
-
     return (
       <Modal show={showModal} onHide={handleClose}>
           <Modal.Header closeButton>
@@ -22,7 +17,7 @@ export default function ModalKeranjang({showModal, handleClose, keranjangDetail,
             <Form onSubmit={handleSubmit}>
               <Form.Group>
                 <Form.Label>Total Harga :</Form.Label>
-                <p><strong>Rp. {keranjangDetail.total_harga.toLocaleString()}</strong></p>
+                <p><strong>Rp. {totalHarga.toLocaleString()}</strong></p>
               </Form.Group>
               <Form.Group>
                 <Form.Label>Jumlah :</Form.Label>
@@ -45,7 +40,7 @@ export default function ModalKeranjang({showModal, handleClose, keranjangDetail,
             </Form>
           </Modal.Body>
           <Modal.Footer>
-            <Button variant="danger" >
+            <Button variant="danger" onClick={()=>hapusPesanan(keranjangDetail.id)}>
                 <FontAwesomeIcon icon={faTrash} className='me-2'/>
                 Hapus Pesanan
             </Button>

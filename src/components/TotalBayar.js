@@ -21,7 +21,9 @@ export default class TotalBayar extends Component {
   render() {
     const totalBayar = this.props.keranjangs.reduce((result, item) => result + item.total_harga,0) 
     return (
-      <div className='fixed-bottom'>
+      <>
+      {/* webb */}
+      <div className='fixed-bottom d-none d-md-block'>
         <Row>
           <Col md={{span: 3,offset: 9 }} className='px-4'>
             <h4>Total Harga : <strong className='float-end mr-2'>Rp. {totalBayar.toLocaleString()}</strong></h4>
@@ -32,6 +34,20 @@ export default class TotalBayar extends Component {
           </Col>
         </Row>
       </div>
+
+      {/* Mobile */}
+      <div className='d-sm-block d-md-none mt-3 mb-2'>
+        <Row>
+          <Col md={{span: 3,offset: 9 }} className='px-4'>
+            <h4>Total Harga : <strong className='float-end mr-2'>Rp. {totalBayar.toLocaleString()}</strong></h4>
+            <Button variant='primary' className='mb-3 w-100' size='lg' onClick={()=>{this.submitTotalBayar()}} as={Link} to='/sukses'>
+              <FontAwesomeIcon icon={faShoppingCart} className='me-2'/>
+              <strong>Bayar</strong>
+            </Button>
+          </Col>
+        </Row>
+      </div>
+      </>
     )
   }
 }
